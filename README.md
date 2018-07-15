@@ -1,9 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+<<<<<<< HEAD
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Table of Contents
+=======
+### Efter att du klonat repositoryt för första gången
+skriv `npm install `i terminalen
+
+### För att starta uvecklingsservern
+skriv `npm start ` i terminalen
+>>>>>>> 43040cfab8f59f778c1d51892db5b6ac9b3d75e9
 
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
