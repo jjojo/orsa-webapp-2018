@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { fire } from '../../modules/firebase'
+import './signInStyle.css'
 
 class SignIn extends Component {
   constructor (props) {
@@ -46,23 +47,22 @@ class SignIn extends Component {
 
   render () {
     return (
-      <div>
-            <h1>Logga in</h1>
+      <div className={'sign-in'}>
+            <h1 className={"signin-h1"}>Logga in</h1>
             < form onSubmit={this.handleSubmit}>
 
-              <label>
-                Användarnamn:
-                <input type={'text'} value={this.state.username}
+                <input className={"signin-input"}
+                  type={'email'}
+                       placeholder={"Email"}
+                       value={this.state.username}
                        onChange={e => this.setState({username: e.target.value})}/>
-              </label>
 
-              <label>
-                Lösenord:
-                <input type={'text'} value={this.state.password}
+                <input className={"signin-input"}
+                       type={'password'} value={this.state.password}
+                       placeholder={"Lösenord"}
                        onChange={e => this.setState({password: e.target.value})}/>
-              </label>
 
-              <input type='submit' value='Submit'/>
+              <input className={"submit-btn signin-input"} type='submit' value='Logga in!'/>
             </form>
 
 
