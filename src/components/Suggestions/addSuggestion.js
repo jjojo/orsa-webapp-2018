@@ -25,12 +25,26 @@ export default class AddSuggestion extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount () {
+    this.authSubscription = fire.auth().onAuthStateChanged((user) => {
+      if (user !== null) {
+        this.setState({
+          email: user.email,
+        })
+      }
+    })
+  }
+
+  componentWillUnmount () {
+    this.authSubscription()
+  }
+
   handleSubmit (event) {
     event.preventDefault()
     this.suggestionsRef.push(
       {
         to: this.state.to,
-        from: 'signed in user',
+        from: this.state.email,
         points: this.state.points,
         description: this.state.description,
         timestamp: new Date().toUTCString()
