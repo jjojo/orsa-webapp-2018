@@ -7,7 +7,8 @@ class AdminSuggestions extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { suggestions: [] };
+    this.state = { suggestions: [],
+      changedValue: 0};
     this.db = fire.database()
     this.suggestionsRef = fire.database().ref('/suggestions');
   }
@@ -48,6 +49,8 @@ class AdminSuggestions extends Component {
 
 
 
+
+
   render() {
     return (
       <div className={"admin-suggestions"}>
@@ -56,7 +59,7 @@ class AdminSuggestions extends Component {
           return (
             <div key={i}>
               <Suggestion
-                suggestion={s.data}
+                suggestion={s}
                 accept={() => this.accept(s)}
                 decline={() => this.decline(s)}
               />

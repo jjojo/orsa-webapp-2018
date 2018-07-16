@@ -1,45 +1,53 @@
-import React, { Component } from 'react';
-import { fire } from '../../modules/firebase';
+import React, { Component } from 'react'
+import { fire } from '../../modules/firebase'
+import Stats from './stats'
 
 export default class Highscore extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.state = { highscore: [] };
-    this.scoresRef = fire.database().ref('/highscore');
+    this.state = {users: [],
+    show:false}
+    this.usersRef = fire.database().ref('/users')
   }
 
-  componentDidMount() {
-    this.scoresRef.on('value', (snapshot) => {
-      this.setState({ highscore: snapshot.val() });
+  componentDidMount () {
+    this.usersRef.on('value', (snapshot) => {
+      let users = []
+
+      Object.keys(snapshot.val()).forEach(key => {
+        users.push(snapshot.val()[key])
+      })
+      this.setState({users: users})
+      console.log(this.state)
     }, (error) => {
-      console.log(error);
-    });
+      console.log(error)
+    })
   }
 
   // Compares points in the objects passed
-  comparePoints(a, b) {
-    let comparison = 0;
+  comparePoints (a, b) {
+    let comparison = 0
 
     if (a.points > b.points) {
-      comparison = -1;
+      comparison = -1
     } else if (b.points > a.points) {
-      comparison = 1;
+      comparison = 1
     }
-    return comparison;
+    return comparison
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h1>Scoreboard</h1>
-        {this.state.highscore.sort(this.comparePoints)
-          .map(person => (
-            <div key={person.name}>
-              {`${person.name} ${person.points}`}
-            </div>
-          ))}
+          {this.state.users.sort(this.comparePoints)
+            .map(person => (
+              <div key={person.name}>
+                <Stats user={person} show={this.state.show} />
+              </div>
+            ))}
       </div>
-    );
+    )
   }
 }

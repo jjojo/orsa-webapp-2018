@@ -45,9 +45,8 @@ input[type='submit']
     color: white;
     background-color: #ff881d;
     border: none;
+    margin-top: 70vh;
     position: absolute;
-    left: 0%;
-    bottom: 2%;
 }
 
 .submit-btn:hover{
