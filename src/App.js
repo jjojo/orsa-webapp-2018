@@ -19,6 +19,7 @@ const App = () => {
         <Route path={'/suggestion'} component={AddSuggestion}/>
         <Route path={'/adminSuggestion'} component={AdminSuggestions}/>
         <Route path={'/highscore'} component={Highscore}/>
+        <Route path={'/history'} component={History}/>
       </Switch>
     </Router>
   )

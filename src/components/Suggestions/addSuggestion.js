@@ -6,23 +6,16 @@ export default class AddSuggestion extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      to: 'Jesper',
-      from: 'signed in user',
+      to: '',
+      from: '',
       points: 0,
       description: '',
-      people: [
-        {name: 'Jesper'},
-        {name: 'Axel'},
-        {name: 'Tobias'},
-        {name: 'Jonas'},
-        {name: 'Vincent'},
-        {name: 'Johan A'},
-        {name: 'Krill'},
-      ]
+      people: []
     }
     // Create a root reference
     this.storageRef = fire.storage().ref()
     this.suggestionsRef = fire.database().ref('/suggestions')
+    this.usersRef = fire.database().ref('/users')
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -36,6 +29,23 @@ export default class AddSuggestion extends Component {
       } else {
         window.location.pathname = '/'
       }
+    })
+    this.fetchUsers()
+  }
+
+  fetchUsers(){
+    this.usersRef.on('value', (snapshot) => {
+      let people = []
+      console.log(snapshot.val())
+      Object.keys(snapshot.val()).forEach(key => {
+        if(key !== this.state.user.email.split("@")[0]){
+          people.push(snapshot.val()[key])
+        }
+      })
+      this.setState({people: people})
+      console.log(this.state)
+    }, (error) => {
+      console.log(error)
     })
   }
 
@@ -52,6 +62,16 @@ export default class AddSuggestion extends Component {
         points: this.state.points,
         description: this.state.description,
         timestamp: new Date().toUTCString()
+      }
+    ).then( () => {
+        alert("thanks for the suggestion")
+        this.setState({
+          to: '',
+          from: '',
+          points: 0,
+          description: '',
+        })
+        this.fetchUsers()
       }
     )
 
@@ -114,8 +134,8 @@ export default class AddSuggestion extends Component {
             <form className={'formField'} onSubmit={this.handleSubmit}>
               <div className={'containerDropdown'}>
                 <label>
-                  Give points to:
-                  <select value={this.state.to} onChange={e => this.setState({to: e.target.value})}>
+                  {"Give points to: "}
+                  <select className={"select"} value={this.state.to} onChange={e => this.setState({to: e.target.value})}>
                     {
                       this.state.people.map(person => {
                         return (<option key={person.name} value={person.name}>
@@ -127,13 +147,15 @@ export default class AddSuggestion extends Component {
                 </label>
               </div>
               <div>
-      <textarea value={this.state.description}
-                onChange={e => this.setState({description: e.target.value})} placeholder={'Motivation..'}/>
+      <textarea className={"textarea"}
+                value={this.state.description}
+                onChange={e => this.setState({description: e.target.value})}
+                placeholder={'Motivation..'}/>
               </div>
               <div className={'containerDropdown'}>
                 <label>
                   {'Points: '}
-                  <select value={this.state.points} onChange={e => this.setState({points: e.target.value})}>
+                  <select className={"select"} value={this.state.points} onChange={e => this.setState({points: e.target.value})}>
                     {
                       Array.from({length: 21}, (x, i) => i - 10).map(num => {
                         return (<option key={num} value={num}>
@@ -159,7 +181,7 @@ export default class AddSuggestion extends Component {
               <img src={this.state.image} className={'imageUpload'}/>
 
 
-              <input type="submit" value="Submit"/>
+              <input className={"submit-suggestion-btn"} type="submit" value="Submit"/>
             </form>
           </div>}
       </div>
