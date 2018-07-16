@@ -24,22 +24,20 @@ class AdminSuggestions extends Component {
     });
   }
 
+  transact(path, suggestion){
+    this.db.ref('/users/' + path)
+      .transaction((currentValue) => {
+        return currentValue + parseInt(suggestion.data.points)
+      })
+  }
+
   accept(s) {
-    this.db.ref('/users/' + s.data.to.toLowerCase() + '/pointsReceived/' + s.data.from.toLowerCase())
-      .transaction((currentValue) => {
-        return currentValue + parseInt(s.data.points)
-      })
+    let from = s.data.from.toLowerCase()
+    let to = s.data.to.toLowerCase()
 
-    this.db.ref('/users/' + s.data.to.toLowerCase() + '/points')
-      .transaction((currentValue) => {
-        return currentValue + parseInt(s.data.points)
-      })
-
-    this.db.ref('/users/' + s.data.from.toLowerCase() + '/pointsGiven/' + s.data.to.toLowerCase())
-      .transaction((currentValue) => {
-        return currentValue + parseInt(s.data.points)
-      })
-
+    this.transact(to + '/pointsReceived/' + from, s)
+    this.transact(to + '/points', s)
+    this.transact(from + '/pointsGiven/' + to, s)
     this.db.ref('/suggestions/' + s.key).remove()
   }
 
@@ -55,12 +53,13 @@ class AdminSuggestions extends Component {
       <div className={"admin-suggestions"}>
         <h1 className={"admin-suggestion-h1"}>Suggestions</h1>
         {this.state.suggestions.map( (s,i) => {
-          console.log(s)
           return (
             <div key={i}>
-              <Suggestion suggestion={s.data} accept={() => this.accept(s)} decline={() => this.decline(s)}/>
-              {/*<h4>{` Till: ${s.to} poäng: ${s.points} från: ${s.from} tid: ${s.timestamp} `}</h4>*/}
-              {/*<p>{s.description}</p>*/}
+              <Suggestion
+                suggestion={s.data}
+                accept={() => this.accept(s)}
+                decline={() => this.decline(s)}
+              />
             </div>
           )
         })}
