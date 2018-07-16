@@ -6,6 +6,7 @@
 
 .admin-suggestions{
     background-color: #8fd16f;
+    min-height: 100vh;
 }
 
 .suggestion{

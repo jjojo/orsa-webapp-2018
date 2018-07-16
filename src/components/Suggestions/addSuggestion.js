@@ -55,10 +55,10 @@ export default class AddSuggestion extends Component {
       }
     )
 
-    const ImagesRef = this.storageRef.child('images/' + this.state.imageName)
-    ImagesRef.putString(this.state.image).then((snapshot) => {
-      console.log('Uploaded a blob or file!')
-    })
+    // const ImagesRef = this.storageRef.child('images/' + this.state.imageName)
+    // ImagesRef.putString(this.state.image).then((snapshot) => {
+    //   console.log('Uploaded a blob or file!')
+    // })
 
   }
 
@@ -99,7 +99,6 @@ export default class AddSuggestion extends Component {
         // Create a root reference
         this.storageRef = fire.storage().ref()
         this.suggestionsRef = fire.database().ref('/suggestions')
-        this.handleSubmit = this.handleSubmit.bind(this)
       }
 
       // Load files into file reader
@@ -152,7 +151,7 @@ export default class AddSuggestion extends Component {
                   <input type={'file'}
                          onChange={(e) => {
                            console.log(e.target.files)
-                           this.resizeImage(e.target.files[0])
+                           // this.resizeImage(e.target.files[0])
                          }}/>
                 </label>
               </div>
