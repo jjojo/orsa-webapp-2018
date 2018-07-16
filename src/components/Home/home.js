@@ -30,7 +30,7 @@ class Home extends Component {
 
   render () {
     return (
-      <div className={"background"}>
+      <div className={"backgroundHome"}>
       {/* {this.state.email ? this.state.email : 'no user signed in'}*/}
         {/* HTML här, css i homeStyle.css*/}
         <div><Button handleClick={() =>
