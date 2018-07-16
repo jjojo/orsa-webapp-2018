@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SignOut from '../SignOut/signOut'
-import Button from "./Button"
+import Button from './Button'
+import SetUsername from './setUsername'
 import { fire } from '../../modules/firebase'
 
 import './homeStyle.css'
@@ -18,8 +19,13 @@ class Home extends Component {
       if (user !== null) {
         this.setState({
           loading: false,
+          user: user,
+          displayName: user.displayName,
           email: user.email,
         })
+        console.log(this.state.user)
+      } else {
+        window.location.pathname = "/"
       }
     })
   }
@@ -30,14 +36,18 @@ class Home extends Component {
 
   render () {
     return (
-      <div className={"background"}>
-      {/* {this.state.email ? this.state.email : 'no user signed in'}*/}
-        {/* HTML här, css i homeStyle.css*/}
-        <div><Button handleClick={() =>
-        {window.location.pathname = '/highscore'}} label={"Highscore"}/></div>
-        <div><Button handleClick={() =>
-        {window.location.pathname = '/suggestion'}} label={"Suggestions"}/></div>
-
+      <div className={'background'}>
+        <h2 className={'home-h1'}>{this.state.user ? (<div>{'Welcome ' + this.state.user.displayName}</div>) : ''}</h2>
+        {this.state.displayName
+          ? (<div>
+              { this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? <Button handleClick={() => {window.location.pathname = '/highscore'}} label={'Highscore'}/> : ""}
+              { this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1'
+                ? <Button handleClick={() => {window.location.pathname = '/adminSuggestion'}} label={'Suggestions'}/>
+                : <Button handleClick={() => {window.location.pathname = '/suggestion'}} label={'Suggestions'}/>}
+          </div>)
+          : (<div>
+            {!this.state.user ? ' ' : <SetUsername user={this.state.user}/>}
+          </div>)}
 
         <SignOut/>
 

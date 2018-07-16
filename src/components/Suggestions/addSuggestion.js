@@ -31,7 +31,10 @@ export default class AddSuggestion extends Component {
       if (user !== null) {
         this.setState({
           email: user.email,
+          user: user,
         })
+      } else {
+        window.location.pathname = '/'
       }
     })
   }
@@ -45,17 +48,17 @@ export default class AddSuggestion extends Component {
     this.suggestionsRef.push(
       {
         to: this.state.to,
-        from: this.state.email,
+        from: this.state.email.split('@')[0],
         points: this.state.points,
         description: this.state.description,
         timestamp: new Date().toUTCString()
       }
     )
 
-    const ImagesRef = this.storageRef.child('images/' + this.state.imageName);
+    const ImagesRef = this.storageRef.child('images/' + this.state.imageName)
     ImagesRef.putString(this.state.image).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
-    });
+      console.log('Uploaded a blob or file!')
+    })
 
   }
 
@@ -106,57 +109,60 @@ export default class AddSuggestion extends Component {
   }
 
   render () {
-    return (
-      <form onSubmit={this.handleSubmit}>
+    return (<div>
+      {this.state.user && this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? 'You are signd in as admin and can\'t make suggestions' :
+        <div>
+          <form onSubmit={this.handleSubmit}>
 
-        <label>
-          Till:
-          <select value={this.state.to} onChange={e => this.setState({to: e.target.value})}>
-            {
-              this.state.people.map(person => {
-                return (<option key={person.name} value={person.name}>
-                  {person.name}
-                </option>)
-              })
-            }
-          </select>
-        </label>
+            <label>
+              Till:
+              <select value={this.state.to} onChange={e => this.setState({to: e.target.value})}>
+                {
+                  this.state.people.map(person => {
+                    return (<option key={person.name} value={person.name}>
+                      {person.name}
+                    </option>)
+                  })
+                }
+              </select>
+            </label>
 
-        <label>
-          Poäng:
-          <select value={this.state.points} onChange={e => this.setState({points: e.target.value})}>
-            {
-              Array.from({length: 21}, (x, i) => i - 10).map(num => {
-                return (<option key={num} value={num}>
-                  {num}
-                </option>)
-              })
-            }
-          </select>
-        </label>
-
-
-        <label>
-          Beskrivning:
-          <textarea value={this.state.description}
-                    onChange={e => this.setState({description: e.target.value})}/>
-        </label>
-
-        <label>
-          ladda upp foto:
-          <input type={'file'}
-                 onChange={(e) => {
-                   console.log(e.target.files)
-                   this.resizeImage(e.target.files[0])
-                 }}/>
-        </label>
+            <label>
+              Poäng:
+              <select value={this.state.points} onChange={e => this.setState({points: e.target.value})}>
+                {
+                  Array.from({length: 21}, (x, i) => i - 10).map(num => {
+                    return (<option key={num} value={num}>
+                      {num}
+                    </option>)
+                  })
+                }
+              </select>
+            </label>
 
 
-        <img src={this.state.image} id="output"/>
+            <label>
+              Beskrivning:
+              <textarea value={this.state.description}
+                        onChange={e => this.setState({description: e.target.value})}/>
+            </label>
+
+            <label>
+              ladda upp foto:
+              <input type={'file'}
+                     onChange={(e) => {
+                       console.log(e.target.files)
+                       this.resizeImage(e.target.files[0])
+                     }}/>
+            </label>
 
 
-        <input type="submit" value="Submit"/>
-      </form>
-    )
+            <img src={this.state.image} id="output"/>
+
+
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>}
+    </div>)
   }
 }

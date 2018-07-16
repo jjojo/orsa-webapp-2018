@@ -27,3 +27,9 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+.home-h1{
+    text-align: center;
+    margin: 0;
+    padding: 1.5rem;
+}
