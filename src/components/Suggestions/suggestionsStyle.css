@@ -1,0 +1,26 @@
+.formField{
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+}
+.containerDropdown{
+    margin: 15px 15px 15px 15px;
+    font-size: large;
+}
+.backgroundSuggestions{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../resources/kebabsas.jpg");
+    background-position: center center;
+
+}
+textarea{
+    border-color: #222222;
+    border-radius: 2px;
+}
+.imageUpload{
+    width: 90%;
+    background-position: center center;
+}
