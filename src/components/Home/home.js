@@ -36,7 +36,7 @@ class Home extends Component {
 
   render () {
     return (
-      <div className={'background'}>
+      <div className={'backgroundHome'}>
         <h2 className={'home-h1'}>{this.state.user ? (<div>{'Welcome ' + this.state.user.displayName}</div>) : ''}</h2>
         {this.state.displayName
           ? (<div>

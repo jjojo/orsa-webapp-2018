@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { fire } from '../../modules/firebase'
+import './suggestionsStyle.css'
 
 export default class AddSuggestion extends Component {
   constructor (props) {
@@ -12,12 +13,11 @@ export default class AddSuggestion extends Component {
       people: [
         {name: 'Jesper'},
         {name: 'Axel'},
-        {name: 'Oliver'},
+        {name: 'Tobias'},
         {name: 'Jonas'},
-        {name: 'Andreas'},
+        {name: 'Vincent'},
         {name: 'Johan A'},
-        {name: 'Krillmackan'},
-        {name: 'Christian'}
+        {name: 'Krill'},
       ]
     }
     // Create a root reference
@@ -94,75 +94,76 @@ export default class AddSuggestion extends Component {
             width *= MAX_HEIGHT / height
             height = MAX_HEIGHT
           }
+
         }
-        canvas.width = width
-        canvas.height = height
-
-        ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, width, height)
-
-        this.setState({image: canvas.toDataURL('image/png')})
+        // Create a root reference
+        this.storageRef = fire.storage().ref()
+        this.suggestionsRef = fire.database().ref('/suggestions')
+        this.handleSubmit = this.handleSubmit.bind(this)
       }
+
+      // Load files into file reader
+      reader.readAsDataURL(file)
     }
-    // Load files into file reader
-    reader.readAsDataURL(file)
   }
 
   render () {
-    return (<div>
-      {this.state.user && this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? 'You are signd in as admin and can\'t make suggestions' :
-        <div>
-          <form onSubmit={this.handleSubmit}>
+    return (
+      <div className={'backgroundSuggestions'}>
+        {this.state.user && this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? 'You are signd in as admin and can\'t make suggestions' :
+          <div>
+            <form className={'formField'} onSubmit={this.handleSubmit}>
+              <div className={'containerDropdown'}>
+                <label>
+                  Give points to:
+                  <select value={this.state.to} onChange={e => this.setState({to: e.target.value})}>
+                    {
+                      this.state.people.map(person => {
+                        return (<option key={person.name} value={person.name}>
+                          {person.name}
+                        </option>)
+                      })
+                    }
+                  </select>
+                </label>
+              </div>
+              <div>
+      <textarea value={this.state.description}
+                onChange={e => this.setState({description: e.target.value})} placeholder={'Motivation..'}/>
+              </div>
+              <div className={'containerDropdown'}>
+                <label>
+                  {'Points: '}
+                  <select value={this.state.points} onChange={e => this.setState({points: e.target.value})}>
+                    {
+                      Array.from({length: 21}, (x, i) => i - 10).map(num => {
+                        return (<option key={num} value={num}>
+                          {num}
+                        </option>)
+                      })
+                    }
+                  </select>
+                </label>
+              </div>
 
-            <label>
-              Till:
-              <select value={this.state.to} onChange={e => this.setState({to: e.target.value})}>
-                {
-                  this.state.people.map(person => {
-                    return (<option key={person.name} value={person.name}>
-                      {person.name}
-                    </option>)
-                  })
-                }
-              </select>
-            </label>
+              <div>
+                <label>
+                  Proof:
+                  <input type={'file'}
+                         onChange={(e) => {
+                           console.log(e.target.files)
+                           this.resizeImage(e.target.files[0])
+                         }}/>
+                </label>
+              </div>
 
-            <label>
-              Poäng:
-              <select value={this.state.points} onChange={e => this.setState({points: e.target.value})}>
-                {
-                  Array.from({length: 21}, (x, i) => i - 10).map(num => {
-                    return (<option key={num} value={num}>
-                      {num}
-                    </option>)
-                  })
-                }
-              </select>
-            </label>
+              <img src={this.state.image} className={'imageUpload'}/>
 
 
-            <label>
-              Beskrivning:
-              <textarea value={this.state.description}
-                        onChange={e => this.setState({description: e.target.value})}/>
-            </label>
-
-            <label>
-              ladda upp foto:
-              <input type={'file'}
-                     onChange={(e) => {
-                       console.log(e.target.files)
-                       this.resizeImage(e.target.files[0])
-                     }}/>
-            </label>
-
-
-            <img src={this.state.image} id="output"/>
-
-
-            <input type="submit" value="Submit"/>
-          </form>
-        </div>}
-    </div>)
+              <input type="submit" value="Submit"/>
+            </form>
+          </div>}
+      </div>
+    )
   }
 }

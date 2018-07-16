@@ -18,7 +18,7 @@
     border-width: 3px;
     text-decoration: underline;
 }
-.background{
+.backgroundHome{
     height: 100vh;
     width: 100vw;
     background-image: url("../../resources/johanahorseblue.jpg") ;
