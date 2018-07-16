@@ -9,7 +9,7 @@ const SignOut = () => {
     return (
       <div>
 
-        <Button onClick={()=> {
+        <Button handleClick={()=> {
           fire.auth().signOut().then( (success) => {
             // Sign-out successful.
             console.log(success)
