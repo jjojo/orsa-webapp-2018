@@ -6,6 +6,7 @@ import Home from './components/Home/home'
 import AddSuggestion from './components/Suggestions/addSuggestion'
 import AdminSuggestions from './components/Suggestions/adminSuggestions'
 import Highscore from './components/Highscore/highscore'
+import History from './components/History/history'
 
 const App = () => {
 
