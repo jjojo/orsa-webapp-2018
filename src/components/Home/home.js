@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SignOut from '../SignOut/signOut'
+import Button from "./Button"
 import { fire } from '../../modules/firebase'
 
 import './homeStyle.css'
@@ -29,10 +30,14 @@ class Home extends Component {
 
   render () {
     return (
-      <div>
-        <h1>hemskärm</h1>
-        {this.state.email ? this.state.email : 'no user signed in'}
+      <div className={"background"}>
+      {/* {this.state.email ? this.state.email : 'no user signed in'}*/}
         {/* HTML här, css i homeStyle.css*/}
+        <div><Button handleClick={() =>
+        {window.location.pathname = '/highscore'}} label={"Highscore"}/></div>
+        <div><Button handleClick={() =>
+        {window.location.pathname = '/suggestion'}} label={"Suggestions"}/></div>
+
 
         <SignOut/>
 
