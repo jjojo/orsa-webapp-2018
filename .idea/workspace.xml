@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffdf3811-d62c-4e40-81e7-cb3269477cd4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Suggestions/suggestionsStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/kebabsas.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/homeStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/homeStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -67,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homeStyle.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="homeStyle.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Home/homeStyle.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
@@ -97,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addSuggestion.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="addSuggestion.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="167" column="3" selection-start-line="167" selection-start-column="3" selection-end-line="167" selection-end-column="3" />
+            <state relative-caret-position="165">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -164,9 +158,9 @@
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/components/Suggestions/suggestion.js" />
         <option value="$PROJECT_DIR$/src/components/Suggestions/adminSuggestions.js" />
-        <option value="$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js" />
         <option value="$PROJECT_DIR$/src/components/Home/home.js" />
         <option value="$PROJECT_DIR$/src/components/Home/homeStyle.css" />
+        <option value="$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js" />
       </list>
     </option>
   </component>
@@ -308,7 +302,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29451000" />
+    <option name="totallyTimeSpent" value="29565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="946" extended-state="6" />
@@ -737,16 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="167" column="3" selection-start-line="167" selection-start-column="3" selection-end-line="167" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Home/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -761,6 +745,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Suggestions/addSuggestion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

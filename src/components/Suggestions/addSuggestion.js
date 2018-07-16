@@ -9,7 +9,7 @@ export default class AddSuggestion extends Component {
       to: 'Jesper',
       from: 'signed in user',
       points: 0,
-      description: 'description goes here',
+      description: '',
       people: [
         {name: 'Jesper'},
         {name: 'Axel'},
