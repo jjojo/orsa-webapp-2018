@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router'
+import Button from '../Home/Button.js'
 
 import { fire } from '../../modules/firebase'
 
@@ -8,7 +9,7 @@ const SignOut = () => {
     return (
       <div>
 
-        <button onClick={()=> {
+        <Button onClick={()=> {
           fire.auth().signOut().then( (success) => {
             // Sign-out successful.
             console.log(success)
@@ -17,9 +18,9 @@ const SignOut = () => {
             // An error happened.
             console.log(error)
           });
-        }}>
+        }} label={"Sign out"}>
           Logga ut
-        </button>
+        </Button>
 
       </div>
     )

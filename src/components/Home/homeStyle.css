@@ -16,6 +16,7 @@
 }
 .homeButton:hover{
     border-width: 3px;
+    text-decoration: underline;
 }
 .background{
     height: 100vh;
