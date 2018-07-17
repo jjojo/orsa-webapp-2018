@@ -3,7 +3,6 @@
     margin-right: auto;
     justify-content: center;
     text-align: center;
-    background-color: white;
 }
 .containerDropdown{
     margin: 15px 15px 15px 15px;
@@ -12,12 +11,14 @@
 .backgroundSuggestions{
     width: 100%;
     height: 100vh;
-    background-image: url("../../resources/kebabsas.jpg");
+    background-image: url("../../resources/37311687_10216608266663132_6404200368988749824_n.jpg");
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: cover;
 
 }
 textarea{
+    background-color: rgba(255,255,255,0.7);
     border-color: #222222;
     border-radius: 2px;
 }
