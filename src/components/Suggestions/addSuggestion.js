@@ -27,7 +27,7 @@ export default class AddSuggestion extends Component {
           user: user,
         })
       } else {
-        window.location.pathname = '/'
+        window.location.href = '/'
       }
     })
     this.fetchUsers()

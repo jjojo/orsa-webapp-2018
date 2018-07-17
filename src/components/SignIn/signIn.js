@@ -19,7 +19,7 @@ class SignIn extends Component {
 
       if (user) {
         console.log(user.email)
-        window.location.pathname = '/home'
+        window.location.href = '/home'
       }
     });
   }

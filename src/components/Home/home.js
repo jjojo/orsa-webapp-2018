@@ -25,7 +25,7 @@ class Home extends Component {
         })
         console.log(this.state.user)
       } else {
-        window.location.pathname = "/"
+        window.location.href = "/"
       }
     })
   }
@@ -40,10 +40,10 @@ class Home extends Component {
         <h2 className={'home-h1'}>{this.state.user ? (<div>{'Welcome ' + this.state.user.displayName}</div>) : ''}</h2>
         {this.state.displayName
           ? (<div>
-              { this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? <Button handleClick={() => {window.location.pathname = '/highscore'}} label={'Highscore'}/> : ""}
+              { this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? <Button handleClick={() => {window.location.href = '/highscore'}} label={'Highscore'}/> : ""}
               { this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1'
-                ? <Button handleClick={() => {window.location.pathname = '/adminSuggestion'}} label={'Suggestions'}/>
-                : <Button handleClick={() => {window.location.pathname = '/suggestion'}} label={'Suggestions'}/>}
+                ? <Button handleClick={() => {window.location.href = '/adminSuggestion'}} label={'Suggestions'}/>
+                : <Button handleClick={() => {window.location.href = '/suggestion'}} label={'Suggestions'}/>}
           </div>)
           : (<div>
             {!this.state.user ? ' ' : <SetUsername user={this.state.user}/>}

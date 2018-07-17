@@ -20,7 +20,7 @@ export default class History extends Component {
         })
         console.log(this.state.user)
       } else {
-        window.location.pathname = "/"
+        window.location.href = "/"
       }
     })
   }
