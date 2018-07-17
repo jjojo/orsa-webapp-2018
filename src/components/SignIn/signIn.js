@@ -48,8 +48,9 @@ class SignIn extends Component {
   render () {
     return (
       <div className={'sign-in'}>
-            <h1 className={"signin-h1"}>Logga in</h1>
             < form onSubmit={this.handleSubmit}>
+
+              <input className={"submit-btn signin-input"} type='submit' value='Sign In'/>
 
                 <input className={"signin-input"}
                   type={'email'}
@@ -62,7 +63,7 @@ class SignIn extends Component {
                        placeholder={"Lösenord"}
                        onChange={e => this.setState({password: e.target.value})}/>
 
-              <input className={"submit-btn signin-input"} type='submit' value='Logga in!'/>
+
             </form>
 
 

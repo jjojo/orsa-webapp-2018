@@ -1,0 +1,17 @@
+.admin-suggestion-h1{
+    margin: 0;
+    padding: 1rem;
+    color: #fff;
+}
+
+.admin-suggestions{
+    background-color: #8fd16f;
+    min-height: 100vh;
+}
+
+.suggestion{
+    border: 2px solid white;
+    border-radius: 5px;
+    margin: 1rem;
+    padding: 0rem 1rem;
+}

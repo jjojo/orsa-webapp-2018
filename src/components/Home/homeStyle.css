@@ -1,0 +1,35 @@
+.homeButton{
+    width: 100vw;
+    align-self: center;
+    height: 18vh;
+
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    padding: 20px;
+    font-weight: 700;
+    border-color: darkslategrey;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+
+}
+.homeButton:hover{
+    border-width: 3px;
+    text-decoration: underline;
+}
+.backgroundHome{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../../resources/johanahorseblue.jpg") ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.home-h1{
+    text-align: center;
+    margin: 0;
+    padding: 1.5rem;
+}
