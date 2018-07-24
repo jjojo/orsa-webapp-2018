@@ -10,7 +10,8 @@ export default class AddSuggestion extends Component {
       from: '',
       points: 0,
       description: '',
-      people: []
+      people: [],
+      image: ''
     }
     // Create a root reference
     this.storageRef = fire.storage().ref()
@@ -42,7 +43,8 @@ export default class AddSuggestion extends Component {
           people.push(snapshot.val()[key])
         }
       })
-      this.setState({people: people})
+      this.setState({people: people,
+      to: people[0].name})
       console.log(this.state)
     }, (error) => {
       console.log(error)
@@ -61,7 +63,8 @@ export default class AddSuggestion extends Component {
         from: this.state.email.split('@')[0],
         points: this.state.points,
         description: this.state.description,
-        timestamp: new Date().toUTCString()
+        timestamp: new Date().toUTCString(),
+        // imageName: this.state.imageName,
       }
     ).then( () => {
         alert("thanks for the suggestion")
@@ -116,14 +119,20 @@ export default class AddSuggestion extends Component {
           }
 
         }
+        canvas.width = width
+        canvas.height = height
+
+        ctx = canvas.getContext('2d')
+        ctx.drawImage(img, 0, 0, width, height)
+        this.setState({image: canvas.toDataURL('image/png')})
         // Create a root reference
         this.storageRef = fire.storage().ref()
         this.suggestionsRef = fire.database().ref('/suggestions')
       }
-
-      // Load files into file reader
-      reader.readAsDataURL(file)
     }
+    // Load files into file reader
+    reader.readAsDataURL(file)
+
   }
 
   render () {
@@ -131,6 +140,7 @@ export default class AddSuggestion extends Component {
       <div className={'backgroundSuggestions'}>
         {this.state.user && this.state.user.uid === '421KpSieGtNA1UItWT4ULT1Ekws1' ? 'You are signd in as admin and can\'t make suggestions' :
           <div>
+            <button onClick={() => window.location.href = '/home'}>Back to menu</button>
             <form className={'formField'} onSubmit={this.handleSubmit}>
               <div className={'containerDropdown'}>
                 <label>
@@ -168,14 +178,14 @@ export default class AddSuggestion extends Component {
               </div>
 
               <div>
-                <label>
-                  Proof:
-                  <input type={'file'}
-                         onChange={(e) => {
-                           console.log(e.target.files)
-                           // this.resizeImage(e.target.files[0])
-                         }}/>
-                </label>
+                {/*<label>*/}
+                  {/*Proof:*/}
+                  {/*<input type={'file'}*/}
+                         {/*onChange={(e) => {*/}
+                           {/*console.log(e.target.files)*/}
+                           {/*this.resizeImage(e.target.files[0])*/}
+                         {/*}}/>*/}
+                {/*</label>*/}
               </div>
 
               <img src={this.state.image} className={'imageUpload'}/>

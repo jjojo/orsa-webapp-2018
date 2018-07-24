@@ -28,6 +28,7 @@ export default class History extends Component {
   render () {
     return (
       <div>
+        <button onClick={() => window.location.href = '/home'}>Back to menu</button>
         <h1>History</h1>
         <p>
         2009 SOMMAR Jesper Jonas Krill Järker<br/>

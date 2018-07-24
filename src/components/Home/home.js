@@ -48,7 +48,7 @@ class Home extends Component {
           : (<div>
             {!this.state.user ? ' ' : <SetUsername user={this.state.user}/>}
           </div>)}
-
+        <Button handleClick={() => {window.location.href = '/history'}} label={'History'}/>
         <SignOut/>
 
       </div>

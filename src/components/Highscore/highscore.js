@@ -41,6 +41,7 @@ export default class Highscore extends Component {
     return (
       <div>
         <h1>Scoreboard</h1>
+        <button onClick={() => window.location.href = '/home'}>Back to menu</button>
           {this.state.users.sort(this.comparePoints)
             .map(person => (
               <div key={person.name}>
